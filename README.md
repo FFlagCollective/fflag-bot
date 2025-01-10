@@ -1,6 +1,6 @@
 # fflag-bot
 
-Intended runtime is Bun, should work with Node.
+Intended runtime is Bun due to native Typescript.
 
 To install dependencies:
 
