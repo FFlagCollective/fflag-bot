@@ -15,6 +15,10 @@ const games = {
         "Hitbox Expander - Variant 2",
         "Hitbox Expander - Variant 3",
         "Hitbox Expander - Variant 4",
+        "Max Graphics",
+        "Min Graphics",
+        "Ping booster",
+        "FPS booster",
     ]
 }
 
@@ -53,10 +57,10 @@ export default {
         const row = new ActionRowBuilder().addComponents(selectMenu);
         //@ts-ignore
         const gameResponse = await interaction.reply({ content: 'Select a preset', components: [row] });
-        const collector = gameResponse.createMessageComponentCollector({ componentType: ComponentType.StringSelect, time: 30_000 });  
+        const collector = gameResponse.createMessageComponentCollector({ filter: i => i.user.id == interaction.user.id, componentType: ComponentType.StringSelect, time: 30_000 });  
         collector.on('collect', async i => {
         	const selection = i.values[0];
-            await interaction.followUp({ content: `${gameUrl}/${selection}.json`, ephemeral: true });
+            await interaction.followUp({ content: `${gameUrl}${selection}.json`, ephemeral: true });
             return;
         })
     }
